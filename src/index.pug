@@ -9,80 +9,85 @@ html(lang="ja")
     meta(name="viewport" content="width=device-width,initial-scale=1.0")
     title #{ttl}
     link(rel="stylesheet" href="css/style.css")
-  body.ly_cont
-    h1 #{ttl}
-    header
+  body
+    h1.ly.ly-title #{ttl}
+    header.ly.ly-header
       button#changeBtn(onclick="changeFC()") 管理シート
-      button#loginBtn.display-inline(onclick="loginFC()") ログイン
-      button#logoutBtn.display-none(onclick="logoutFC()") ログアウト
+      .login-btn
+        button#loginBtn.display-inline(onclick="loginFC()") ログイン
+        button#testLoginBtn.test-login-btn.display-inline(onclick="testLoginFC()") テストログイン(幹事)
+        button#logoutBtn.display-none(onclick="logoutFC()") ログアウト
       p.supplement-message#supplement-message ※ログインすると登録後の編集が可能です。みんなの負担減！
     main
-      section#form.display-block
-        p お名前
-        span#validateMessageName.display-none ※必須です
-        span#validateOverlapName.display-none ※名前が被っているので別の名前で入力お願いします！
-        input#userName.username-input(type="text" placeholder="名前を入力してください")
-        select#rootEdit.display-none(name="")
-          option(value="") 選択
+      #form.display-block
+        .ly
+          p お名前
+          span#validateMessageName.display-none ※必須です
+          span#validateOverlapName.display-none ※名前が被っているので別の名前で入力お願いします！
+          input#userName.username-input(type="text" placeholder="名前を入力してください")
+          select#rootSelect.display-none
+            option(value="") 選択
 
-          //- - for (var x = 0; x < 24; x++)
-            option(value=x) #{x}
-        span#validateMessageCheck.display-none ※チェック必須です
-        .table
-          ul.flex.head
-            li.title 課題曲
-            li Vo
-            li(style="text-align:center;") Gt<br><span style="font-size:10px;">(Lead)<span>
-            li(style="text-align:center;") Gt<br><span style="font-size:10px;">(Side)<span>
-            li Ba
-            li Dr
-        #songCheckboxAll
-          each song,key in song_list 
-            ul.flex.body.song-checkbox
-              li.title #{song} 
-              input(type="checkbox" id=`vo${key}`)
-              input(type="checkbox" id=`gtLead${key}`)
-              input(type="checkbox" id=`gtSide${key}`)
-              input(type="checkbox" id=`ba${key}`)
-              input(type="checkbox" id=`dr${key}`)
-          ul.flex.body.song-checkbox
-            li.title 見学 
-            input#visiter(type="checkbox")
-          ul.flex.body.song-checkbox
-            li.title 初参加 
-            input#first_time(type="checkbox")
+        .ly.ly-check-song
+          span#validateMessageCheck.display-none ※チェック必須です
+          ul.flex.ul-head
+            li.li-title 課題曲
+            li.li-category Vo
+            li.li-category Gt<br><span style="font-size:10px;">(Lead)<span>
+            li.li-category Gt<br><span style="font-size:10px;">(Side)<span>
+            li.li-category Ba
+            li.li-category Dr
+          #songCheckboxAll
+            each song,key in song_list 
+              ul.flex.ul-body.checkbox-size
+                li.li-title #{song} 
+                input(type="checkbox" id=`vo${key}`)
+                input(type="checkbox" id=`gtLead${key}`)
+                input(type="checkbox" id=`gtSide${key}`)
+                input(type="checkbox" id=`ba${key}`)
+                input(type="checkbox" id=`dr${key}`)
+            ul.flex.checkbox-size.ul-body
+              li.li-title 見学 
+              input#visiter(type="checkbox").single-checkbox
+            ul.flex.checkbox-size.ul-body
+              li.li-title 初参加 
+              input#first_time(type="checkbox").single-checkbox
+          div.crud-btn
+            button#addBtn(onclick="addFC()") 送信
+            button#editBtn.display-none(onclick="editFC()") 更新
+            button#removeBtn.display-none(onclick="removeFC()") 取消
+            button#rootEditBtn.display-none(onclick="rootEditFC()") 更新(幹事)
+            button#rootRemoveBtn.display-none(onclick="rootRemoveFC()") 取消(幹事)
+            p.supplement-message.display-none#rootMessage ※選択ユーザーの編集(幹事権限)。<br>自身の編集は再度リロードして行ってください。<br>ログインして登録しているユーザーの削除はできません。
+      
 
-        button#addBtn(onclick="addFC()") 送信
-        button#editBtn.display-none(onclick="editFC()") 更新
-        button#removeBtn.display-none(onclick="removeFC()") 取消
-        button#rootEditBtn.display-none(onclick="rootEditFC()") 更新(幹事)
-        button#rootRemoveBtn.display-none(onclick="rootRemoveFC()") 取消(幹事)
-        p.supplement-message.display-none#rootMessage ※選択ユーザーの編集(幹事権限)。<br>自身の編集は再度リロードして行ってください。<br>ログインして登録しているユーザーの削除はできません。
-      section#sheet.display-none
-        p#peopleNumber
-        table(border="1")
-          tr
-            td.title 課題曲
-            td.td-width Vo
-            td.td-width Gt<br><span style="font-size:10px;">(Lead)<span>
-            td.td-width Gt<br><span style="font-size:10px;">(Side)<span>
-            td.td-width Ba
-            td.td-width Dr
-          each song,key in song_list             
-            tr
-              td #{song}
-              td(id=`sheet_vo${key}`)
-              td(id=`sheet_gtLead${key}`)
-              td(id=`sheet_gtSide${key}`)
-              td(id=`sheet_ba${key}`)
-              td(id=`sheet_dr${key}`)
-        p 見学者
-        p#sheet_visiter.visiter-text
-        p 初参加
-        p#sheet_first_time.visiter-text
-        div#accounting.display-none
-          p 会計
-          p#accountingText.visiter-text
+      //- ⭐⭐シート
+      #sheet.display-none
+        .ly
+          p#peopleNumber
+          table(border="1")
+            tr.thead
+              td.td-title 課題曲
+              td.td-width Vo
+              td.td-width Gt<br><span style="font-size:10px;">(Lead)<span>
+              td.td-width Gt<br><span style="font-size:10px;">(Side)<span>
+              td.td-width Ba
+              td.td-width Dr
+            each song,key in song_list             
+              tr
+                td.song-column #{song}
+                td(id=`sheet_vo${key}`)
+                td(id=`sheet_gtLead${key}`)
+                td(id=`sheet_gtSide${key}`)
+                td(id=`sheet_ba${key}`)
+                td(id=`sheet_dr${key}`)
+          p 見学者
+          span#sheet_visiter
+          p 初参加
+          span#sheet_first_time
+          div#accounting.display-none
+            p 会計
+            p#accountingText.light-text
 
     script(src="https://www.gstatic.com/firebasejs/7.15.3/firebase-app.js")
     script(src="https://www.gstatic.com/firebasejs/7.15.3/firebase-analytics.js")

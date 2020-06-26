@@ -6,181 +6,188 @@
     <title>第18回 スタジオ管理シート</title>
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body class="ly_cont">
-    <h1>第18回 スタジオ管理シート</h1>
-    <header>
+  <body>
+    <h1 class="ly ly-title">第18回 スタジオ管理シート</h1>
+    <header class="ly ly-header">
       <button id="changeBtn" onclick="changeFC()">管理シート</button>
-      <button class="display-inline" id="loginBtn" onclick="loginFC()">ログイン</button>
-      <button class="display-none" id="logoutBtn" onclick="logoutFC()">ログアウト</button>
+      <div class="login-btn">
+        <button class="display-inline" id="loginBtn" onclick="loginFC()">ログイン</button>
+        <button class="test-login-btn display-inline" id="testLoginBtn" onclick="testLoginFC()">テストログイン(幹事)</button>
+        <button class="display-none" id="logoutBtn" onclick="logoutFC()">ログアウト</button>
+      </div>
       <p class="supplement-message" id="supplement-message">※ログインすると登録後の編集が可能です。みんなの負担減！</p>
     </header>
     <main>
-      <section class="display-block" id="form">
-        <p>お名前</p><span class="display-none" id="validateMessageName">※必須です</span><span class="display-none" id="validateOverlapName">※名前が被っているので別の名前で入力お願いします！</span>
-        <input class="username-input" id="userName" type="text" placeholder="名前を入力してください">
-        <select class="display-none" id="rootEdit" name="">
-          <option value="">選択</option>
-        </select><span class="display-none" id="validateMessageCheck">※チェック必須です</span>
-        <div class="table">
-          <ul class="flex head">
-            <li class="title">課題曲</li>
-            <li>Vo</li>
-            <li style="text-align:center;">Gt<br><span style="font-size:10px;">(Lead)<span></li>
-            <li style="text-align:center;">Gt<br><span style="font-size:10px;">(Side)<span></li>
-            <li>Ba</li>
-            <li>Dr</li>
-          </ul>
+      <div class="display-block" id="form">
+        <div class="ly">
+          <p>お名前</p><span class="display-none" id="validateMessageName">※必須です</span><span class="display-none" id="validateOverlapName">※名前が被っているので別の名前で入力お願いします！</span>
+          <input class="username-input" id="userName" type="text" placeholder="名前を入力してください">
+          <select class="display-none" id="rootSelect">
+            <option value="">選択</option>
+          </select>
         </div>
-        <div id="songCheckboxAll">
-          <ul class="flex body song-checkbox">
-            <li class="title">君と夏フェス(10月まで) </li>
-            <input type="checkbox" id="vo0">
-            <input type="checkbox" id="gtLead0">
-            <input type="checkbox" id="gtSide0">
-            <input type="checkbox" id="ba0">
-            <input type="checkbox" id="dr0">
+        <div class="ly ly-check-song"><span class="display-none" id="validateMessageCheck">※チェック必須です</span>
+          <ul class="flex ul-head">
+            <li class="li-title">課題曲</li>
+            <li class="li-category">Vo</li>
+            <li class="li-category">Gt<br><span style="font-size:10px;">(Lead)<span></li>
+            <li class="li-category">Gt<br><span style="font-size:10px;">(Side)<span></li>
+            <li class="li-category">Ba</li>
+            <li class="li-category">Dr</li>
           </ul>
-          <ul class="flex body song-checkbox">
-            <li class="title">ソラニン(10月まで) </li>
-            <input type="checkbox" id="vo1">
-            <input type="checkbox" id="gtLead1">
-            <input type="checkbox" id="gtSide1">
-            <input type="checkbox" id="ba1">
-            <input type="checkbox" id="dr1">
-          </ul>
-          <ul class="flex body song-checkbox">
-            <li class="title">青い栞 </li>
-            <input type="checkbox" id="vo2">
-            <input type="checkbox" id="gtLead2">
-            <input type="checkbox" id="gtSide2">
-            <input type="checkbox" id="ba2">
-            <input type="checkbox" id="dr2">
-          </ul>
-          <ul class="flex body song-checkbox">
-            <li class="title">スターフィッシュ </li>
-            <input type="checkbox" id="vo3">
-            <input type="checkbox" id="gtLead3">
-            <input type="checkbox" id="gtSide3">
-            <input type="checkbox" id="ba3">
-            <input type="checkbox" id="dr3">
-          </ul>
-          <ul class="flex body song-checkbox">
-            <li class="title">刃 </li>
-            <input type="checkbox" id="vo4">
-            <input type="checkbox" id="gtLead4">
-            <input type="checkbox" id="gtSide4">
-            <input type="checkbox" id="ba4">
-            <input type="checkbox" id="dr4">
-          </ul>
-          <ul class="flex body song-checkbox">
-            <li class="title">瞬間センチメンタル </li>
-            <input type="checkbox" id="vo5">
-            <input type="checkbox" id="gtLead5">
-            <input type="checkbox" id="gtSide5">
-            <input type="checkbox" id="ba5">
-            <input type="checkbox" id="dr5">
-          </ul>
-          <ul class="flex body song-checkbox">
-            <li class="title">C7 </li>
-            <input type="checkbox" id="vo6">
-            <input type="checkbox" id="gtLead6">
-            <input type="checkbox" id="gtSide6">
-            <input type="checkbox" id="ba6">
-            <input type="checkbox" id="dr6">
-          </ul>
-          <ul class="flex body song-checkbox">
-            <li class="title">見学 </li>
-            <input id="visiter" type="checkbox">
-          </ul>
-          <ul class="flex body song-checkbox">
-            <li class="title">初参加 </li>
-            <input id="first_time" type="checkbox">
-          </ul>
+          <div id="songCheckboxAll">
+            <ul class="flex ul-body checkbox-size">
+              <li class="li-title">君と夏フェス(10月まで) </li>
+              <input type="checkbox" id="vo0">
+              <input type="checkbox" id="gtLead0">
+              <input type="checkbox" id="gtSide0">
+              <input type="checkbox" id="ba0">
+              <input type="checkbox" id="dr0">
+            </ul>
+            <ul class="flex ul-body checkbox-size">
+              <li class="li-title">ソラニン(10月まで) </li>
+              <input type="checkbox" id="vo1">
+              <input type="checkbox" id="gtLead1">
+              <input type="checkbox" id="gtSide1">
+              <input type="checkbox" id="ba1">
+              <input type="checkbox" id="dr1">
+            </ul>
+            <ul class="flex ul-body checkbox-size">
+              <li class="li-title">青い栞 </li>
+              <input type="checkbox" id="vo2">
+              <input type="checkbox" id="gtLead2">
+              <input type="checkbox" id="gtSide2">
+              <input type="checkbox" id="ba2">
+              <input type="checkbox" id="dr2">
+            </ul>
+            <ul class="flex ul-body checkbox-size">
+              <li class="li-title">スターフィッシュ </li>
+              <input type="checkbox" id="vo3">
+              <input type="checkbox" id="gtLead3">
+              <input type="checkbox" id="gtSide3">
+              <input type="checkbox" id="ba3">
+              <input type="checkbox" id="dr3">
+            </ul>
+            <ul class="flex ul-body checkbox-size">
+              <li class="li-title">刃 </li>
+              <input type="checkbox" id="vo4">
+              <input type="checkbox" id="gtLead4">
+              <input type="checkbox" id="gtSide4">
+              <input type="checkbox" id="ba4">
+              <input type="checkbox" id="dr4">
+            </ul>
+            <ul class="flex ul-body checkbox-size">
+              <li class="li-title">瞬間センチメンタル </li>
+              <input type="checkbox" id="vo5">
+              <input type="checkbox" id="gtLead5">
+              <input type="checkbox" id="gtSide5">
+              <input type="checkbox" id="ba5">
+              <input type="checkbox" id="dr5">
+            </ul>
+            <ul class="flex ul-body checkbox-size">
+              <li class="li-title">C7 </li>
+              <input type="checkbox" id="vo6">
+              <input type="checkbox" id="gtLead6">
+              <input type="checkbox" id="gtSide6">
+              <input type="checkbox" id="ba6">
+              <input type="checkbox" id="dr6">
+            </ul>
+            <ul class="flex checkbox-size ul-body">
+              <li class="li-title">見学 </li>
+              <input class="single-checkbox" id="visiter" type="checkbox">
+            </ul>
+            <ul class="flex checkbox-size ul-body">
+              <li class="li-title">初参加 </li>
+              <input class="single-checkbox" id="first_time" type="checkbox">
+            </ul>
+          </div>
+          <div class="crud-btn">
+            <button id="addBtn" onclick="addFC()">送信</button>
+            <button class="display-none" id="editBtn" onclick="editFC()">更新</button>
+            <button class="display-none" id="removeBtn" onclick="removeFC()">取消</button>
+            <button class="display-none" id="rootEditBtn" onclick="rootEditFC()">更新(幹事)</button>
+            <button class="display-none" id="rootRemoveBtn" onclick="rootRemoveFC()">取消(幹事)</button>
+            <p class="supplement-message display-none" id="rootMessage">※選択ユーザーの編集(幹事権限)。<br>自身の編集は再度リロードして行ってください。<br>ログインして登録しているユーザーの削除はできません。</p>
+          </div>
         </div>
-        <button id="addBtn" onclick="addFC()">送信</button>
-        <button class="display-none" id="editBtn" onclick="editFC()">更新</button>
-        <button class="display-none" id="removeBtn" onclick="removeFC()">取消</button>
-        <button class="display-none" id="rootEditBtn" onclick="rootEditFC()">更新(幹事)</button>
-        <button class="display-none" id="rootRemoveBtn" onclick="rootRemoveFC()">取消(幹事)</button>
-        <p class="supplement-message display-none" id="rootMessage">※選択ユーザーの編集(幹事権限)。<br>自身の編集は再度リロードして行ってください。<br>ログインして登録しているユーザーの削除はできません。</p>
-      </section>
-      <section class="display-none" id="sheet">
-        <p id="peopleNumber"></p>
-        <table border="1">
-          <tr>
-            <td class="title">課題曲</td>
-            <td class="td-width">Vo</td>
-            <td class="td-width">Gt<br><span style="font-size:10px;">(Lead)<span></td>
-            <td class="td-width">Gt<br><span style="font-size:10px;">(Side)<span></td>
-            <td class="td-width">Ba</td>
-            <td class="td-width">Dr</td>
-          </tr>
-          <tr>
-            <td>君と夏フェス(10月まで)</td>
-            <td id="sheet_vo0"></td>
-            <td id="sheet_gtLead0"></td>
-            <td id="sheet_gtSide0"></td>
-            <td id="sheet_ba0"></td>
-            <td id="sheet_dr0"></td>
-          </tr>
-          <tr>
-            <td>ソラニン(10月まで)</td>
-            <td id="sheet_vo1"></td>
-            <td id="sheet_gtLead1"></td>
-            <td id="sheet_gtSide1"></td>
-            <td id="sheet_ba1"></td>
-            <td id="sheet_dr1"></td>
-          </tr>
-          <tr>
-            <td>青い栞</td>
-            <td id="sheet_vo2"></td>
-            <td id="sheet_gtLead2"></td>
-            <td id="sheet_gtSide2"></td>
-            <td id="sheet_ba2"></td>
-            <td id="sheet_dr2"></td>
-          </tr>
-          <tr>
-            <td>スターフィッシュ</td>
-            <td id="sheet_vo3"></td>
-            <td id="sheet_gtLead3"></td>
-            <td id="sheet_gtSide3"></td>
-            <td id="sheet_ba3"></td>
-            <td id="sheet_dr3"></td>
-          </tr>
-          <tr>
-            <td>刃</td>
-            <td id="sheet_vo4"></td>
-            <td id="sheet_gtLead4"></td>
-            <td id="sheet_gtSide4"></td>
-            <td id="sheet_ba4"></td>
-            <td id="sheet_dr4"></td>
-          </tr>
-          <tr>
-            <td>瞬間センチメンタル</td>
-            <td id="sheet_vo5"></td>
-            <td id="sheet_gtLead5"></td>
-            <td id="sheet_gtSide5"></td>
-            <td id="sheet_ba5"></td>
-            <td id="sheet_dr5"></td>
-          </tr>
-          <tr>
-            <td>C7</td>
-            <td id="sheet_vo6"></td>
-            <td id="sheet_gtLead6"></td>
-            <td id="sheet_gtSide6"></td>
-            <td id="sheet_ba6"></td>
-            <td id="sheet_dr6"></td>
-          </tr>
-        </table>
-        <p>見学者</p>
-        <p class="visiter-text" id="sheet_visiter"></p>
-        <p>初参加</p>
-        <p class="visiter-text" id="sheet_first_time"></p>
-        <div class="display-none" id="accounting">
-          <p>会計</p>
-          <p class="visiter-text" id="accountingText"></p>
+      </div>
+      <div class="display-none" id="sheet">
+        <div class="ly">
+          <p id="peopleNumber"></p>
+          <table border="1">
+            <tr class="thead">
+              <td class="td-title">課題曲</td>
+              <td class="td-width">Vo</td>
+              <td class="td-width">Gt<br><span style="font-size:10px;">(Lead)<span></td>
+              <td class="td-width">Gt<br><span style="font-size:10px;">(Side)<span></td>
+              <td class="td-width">Ba</td>
+              <td class="td-width">Dr</td>
+            </tr>
+            <tr>
+              <td class="song-column">君と夏フェス(10月まで)</td>
+              <td id="sheet_vo0"></td>
+              <td id="sheet_gtLead0"></td>
+              <td id="sheet_gtSide0"></td>
+              <td id="sheet_ba0"></td>
+              <td id="sheet_dr0"></td>
+            </tr>
+            <tr>
+              <td class="song-column">ソラニン(10月まで)</td>
+              <td id="sheet_vo1"></td>
+              <td id="sheet_gtLead1"></td>
+              <td id="sheet_gtSide1"></td>
+              <td id="sheet_ba1"></td>
+              <td id="sheet_dr1"></td>
+            </tr>
+            <tr>
+              <td class="song-column">青い栞</td>
+              <td id="sheet_vo2"></td>
+              <td id="sheet_gtLead2"></td>
+              <td id="sheet_gtSide2"></td>
+              <td id="sheet_ba2"></td>
+              <td id="sheet_dr2"></td>
+            </tr>
+            <tr>
+              <td class="song-column">スターフィッシュ</td>
+              <td id="sheet_vo3"></td>
+              <td id="sheet_gtLead3"></td>
+              <td id="sheet_gtSide3"></td>
+              <td id="sheet_ba3"></td>
+              <td id="sheet_dr3"></td>
+            </tr>
+            <tr>
+              <td class="song-column">刃</td>
+              <td id="sheet_vo4"></td>
+              <td id="sheet_gtLead4"></td>
+              <td id="sheet_gtSide4"></td>
+              <td id="sheet_ba4"></td>
+              <td id="sheet_dr4"></td>
+            </tr>
+            <tr>
+              <td class="song-column">瞬間センチメンタル</td>
+              <td id="sheet_vo5"></td>
+              <td id="sheet_gtLead5"></td>
+              <td id="sheet_gtSide5"></td>
+              <td id="sheet_ba5"></td>
+              <td id="sheet_dr5"></td>
+            </tr>
+            <tr>
+              <td class="song-column">C7</td>
+              <td id="sheet_vo6"></td>
+              <td id="sheet_gtLead6"></td>
+              <td id="sheet_gtSide6"></td>
+              <td id="sheet_ba6"></td>
+              <td id="sheet_dr6"></td>
+            </tr>
+          </table>
+          <p>見学者</p><span id="sheet_visiter"></span>
+          <p>初参加</p><span id="sheet_first_time"></span>
+          <div class="display-none" id="accounting">
+            <p>会計</p>
+            <p class="light-text" id="accountingText"></p>
+          </div>
         </div>
-      </section>
+      </div>
     </main>
     <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.15.3/firebase-analytics.js"></script>

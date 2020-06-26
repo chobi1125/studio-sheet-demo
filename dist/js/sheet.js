@@ -1,6 +1,3 @@
-// let firebase_db_not_login = [];
-// let firebase_db_login = [];
-// let firebase_db_root = [];
 let firebase_name_all = [];
 let firebase_mk_select = [];
 let firebase_db_sheet;
@@ -15,28 +12,17 @@ let mkSheetFC = () => {
     firebase_mk_select.push(data.val());
     // DBにデータがあった場合
     if (firebase_db_sheet != null) {
-      // 2つ以上＝配列だった場合
+      // 配列だった場合
       if (Array.isArray(firebase_db_sheet.id) === true){
         firebase_db_sheet.id.map((id) => {
           let sheet_elem = document.getElementById(`sheet_${id}`);
-          // ifまだ名前がシートにない場合elseある場合
-          if (sheet_elem.textContent != ""){
-            sheet_elem.innerHTML = `${sheet_elem.innerHTML}<br>${firebase_db_sheet.name}`;
-          } else {
-            sheet_elem.textContent = firebase_db_sheet.name;
-          }
+            console.log("mkText")
+            let mkText = document.createElement('p');
+            mkText.textContent = `・${firebase_db_sheet.name}`;
+            sheet_elem.appendChild(mkText);
         });
-        // 1つ=配列じゃなかった場合
-      } else {
-        let sheet_elem = document.getElementById(`sheet_${firebase_db_sheet.id}`);
-        // ifまだ名前がシートにない場合elseある場合
-        if (sheet_elem.textContent != ""){
-          sheet_elem.innerHTML = `${sheet_elem.innerHTML}<br>${firebase_db_sheet.name}`;
-        } else {
-          sheet_elem.textContent = firebase_db_sheet.name;
-        }
       }
-    };
+    }
   });
   // ログインユーザー
   db.ref(`/users/login`).on('child_added', (data) => {
@@ -46,24 +32,17 @@ let mkSheetFC = () => {
     firebase_name_all.push(data.val());
     firebase_mk_select.push(data.val());
     if (firebase_db_sheet != null) {
+      // 配列だった場合
       if (Array.isArray(firebase_db_sheet.id) === true){
         firebase_db_sheet.id.map((id) => {
           let sheet_elem = document.getElementById(`sheet_${id}`);
-          if (sheet_elem.textContent != ""){
-            sheet_elem.innerHTML = `${sheet_elem.innerHTML}<br>${firebase_db_sheet.name}`;
-          } else {
-            sheet_elem.textContent = firebase_db_sheet.name;
-          }
+            console.log("mkText")
+            let mkText = document.createElement('p');
+            mkText.textContent = `・${firebase_db_sheet.name}`;
+            sheet_elem.appendChild(mkText);
         });
-      } else {
-        let sheet_elem = document.getElementById(`sheet_${firebase_db_sheet.id}`);
-        if (sheet_elem.textContent != ""){
-          sheet_elem.innerHTML = `${sheet_elem.innerHTML}<br>${firebase_db_sheet.name}`;
-        } else {
-          sheet_elem.textContent = firebase_db_sheet.name;
-        }
       }
-    };
+    }
   });
   // ルートユーザー
   db.ref(`/users/root`).on('child_added', (data) => {
@@ -72,23 +51,16 @@ let mkSheetFC = () => {
     // firebase_db_root.push(data.val());
     firebase_name_all.push(data.val());
     if (firebase_db_sheet != null) {
+      // 配列だった場合
       if (Array.isArray(firebase_db_sheet.id) === true){
         firebase_db_sheet.id.map((id) => {
           let sheet_elem = document.getElementById(`sheet_${id}`);
-          if (sheet_elem.textContent != ""){
-            sheet_elem.innerHTML = `${sheet_elem.innerHTML}<br>${firebase_db_sheet.name}`;
-          } else {
-            sheet_elem.textContent = firebase_db_sheet.name;
-          }
+            console.log("mkText")
+            let mkText = document.createElement('p');
+            mkText.textContent = `・${firebase_db_sheet.name}`;
+            sheet_elem.appendChild(mkText);
         });
-      } else {
-        let sheet_elem = document.getElementById(`sheet_${firebase_db_sheet.id}`);
-        if (sheet_elem.textContent != ""){
-          sheet_elem.innerHTML = `${sheet_elem.innerHTML}<br>${firebase_db_sheet.name}`;
-        } else {
-          sheet_elem.textContent = firebase_db_sheet.name;
-        }
       }
-    };
+    }
   });
 }

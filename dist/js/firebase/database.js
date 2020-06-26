@@ -1,8 +1,8 @@
 let firebase_db_all;
 let firebase_db_user; // ログイン中の自身のデータ
 let number; // 参加者人数
-// ルートユーザー [まさる、サークル、ならちゃん]
-let root_uid = ["dvOFmUwb6feFMshpO6kle4V0y7x2","6UVC0qLCqBhxcF6VquT3oOhq3YM2","syD2tIexnhQs0omrsQYqoePVGHn2"]
+// ルートユーザー [ルート]
+let root_uid = ["12wYYpvChKe5vnng34x28Kgpyks1"];
 
 // DB追加
 let addFC = () => {

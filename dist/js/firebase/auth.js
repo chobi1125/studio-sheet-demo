@@ -22,6 +22,11 @@ let loggedInFC = () => {
       checkbox_array.push(id); // 登録時に使う配列にデータを初期値としてpush
     });
   };
+  // 通常ログインの場合テストログインのボタンを非表示
+  if (firebase.auth().currentUser != null && firebase.auth().currentUser.displayName != null){
+    
+    test_login_btn.className = "display-none";
+  }
 };
 // ログイン処理
 let loginFC = ()=> {
@@ -49,3 +54,16 @@ let logoutFC = ()=> {
     l("logout false")
   });
 }
+
+// テスト幹事ログイン
+let testLoginFC = () => {
+  firebase.auth().signInAnonymously()
+  .catch(function(error) {
+    console.log(error.message);
+  });
+  firebase.auth().onAuthStateChanged(function(user) {
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    location.reload();
+  });
+};

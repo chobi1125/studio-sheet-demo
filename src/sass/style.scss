@@ -1,129 +1,17 @@
 /*
-  ベースグループ
-*/
-body {
-  background-color: rgba(255, 195, 104, 0.313);
-  margin: 0 auto;
-  font-family: sans-serif;
-}
-
-
-/*
-  レイアウトグループ
+  汎用
 */
 
-.ly_cont{
-  max-width: 90%;
+.display-block {
+  display: block;
 }
 
-h1 {
-  color: black;
-  font-size: 22px;
-  background-color: white;
-  border-radius: 5px;
-  padding: 5px;
+.display-none {
+  display: none;
 }
 
-
-/*
-  モジュールグループ
-*/
-
-
-
-header {
-  color: rgba(255, 165, 29, 0.857);
-  font-size: 22px;
-  background-color: white;
-  border-radius: 5px;
-  padding: 5px;
-  margin-bottom: 10px;
-}
-
-select {
-  height: 23px;
-  width: 100px;
-}
-
-main {
-  background-color: white;
-  border-radius: 5px;
-  padding: 5px;
-  margin-bottom: 20px; // スマホで下のボタン押しやすくする用
-}
-
-p {
-  font-weight: bold;
-}
-
-button {
-  font-size: 10px;
-  font-weight: bold;
-  padding: 5px 8px;
-  background-color: rgba(255, 165, 29, 0.857);
-  color: #fff;
-  border-style: none;
-  border-radius: 5px;
-}
-
-
-table {
-  border-collapse: collapse;
-  width:100%;
-  font-size: 12px;
-}
-
-td{
-  // border: 2px solid;
-  padding: 0;
-  // border-collapse: collapse
-}
-
-.td-width {
-  width: 50px;
-}
-
-.head > li {
-  font-weight: bold;
-}
-
-.username-input {
-  font-size: 15px;
-}
-
-.body > li {
-  font-size: 12px;
-}
-
-.song-checkbox input {
-  transform:scale(1.5);
-}
-
-#sheet input {
-  width: 20px;
-}
-
-.title {
-  width: 52px;
-}
-
-.validate-message {
-  color: red;
-  font-size: 12px;
-}
-
-.visiter-text{
-  font-size: 12px;
-  font-weight: lighter;
-}
-
-td.title {
-  width: 60px;
-}
-
-.gt {
-  width:35px;
-  text-align:center;
+.display-inline {
+  display: inline-block;
 }
 
 .flex {
@@ -133,50 +21,191 @@ td.title {
   padding: 0;
 }
 
-.table {
-  margin-top:10px;
+/*
+  ベースグループ
+*/
+
+body {
+  color: black;
+  background-color: rgba(255, 195, 104, 0.313);
+  margin: 0 auto;
+  font-family: sans-serif;
+  max-width: 90%;
 }
 
-.display-block {
-  display: block;
-}
-.display-none {
-  display: none;
-}
-.display-inline {
-  display: inline-block;
+p {
+  font-weight: bold;
 }
 
-.width {
-  width: 48px;
+@media screen and (min-width:768px) and ( max-width:1024px) {
+  body {
+    max-width: 40%;
+  }
 }
 
+@media screen and (min-width:1024px) {
+  body {
+    max-width: 30%;
+  }
+}
+
+button {
+  font-size: 12px;
+  // font-weight: bold;
+  padding: 5px 8px;
+  background-color: rgba(204, 123, 0, 0.891);
+  color: #fff;
+  border-style: none;
+  border-radius: 5px;
+  width: 75px;
+  height: 30px;
+}
+
+// ヘッダーのボタンだけ少し幅広く。
+header {
+  button {
+    width: 80px;
+  }
+}
+
+/*
+  レイアウトグループ
+*/
+
+.ly {
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.ly-title {
+  font-size: 22px;
+}
+
+.ly-check-song {
+  margin-bottom: 30px; // スマホで下のボタン押しやすくする用
+}
+
+/*
+  モジュールグループ
+*/
+
+// 認証関連のボタンは右端に寄せる
+.login-btn {
+  float: right;
+}
+
+.test-login-btn {
+  width: 140px;
+}
+
+// ルート権限のセレクトタグのサイズをinputにそろえる
+.name-select {
+  height: 23px;
+  width: 100px;
+}
+
+
+// 更新・削除関連のボタンの大きさ、隣接するボタンの間隔調整
+.crud-btn > button {
+  margin-right: 15px;
+}
+/*
+  チェックボックス関連
+*/
+
+.username-input {
+  font-size: 15px;
+}
+
+.ul-head {
+  li {
+    font-weight: bold;
+  }
+  .li-category {
+    width: 35px;
+  }
+} 
+
+.li-title {
+  width: 52px;
+  padding: 0 5px;
+}
+
+.ul-body {
+  // チェックボックスの背景をグレーに設定
+  background-color: rgba(209, 209, 209, 0.129);
+  padding: 5px 0;
+  border-radius: 5px;
+  li {
+    font-size: 12px;
+    padding: 5px;
+  }
+  // checkboxを中央寄せ
+  input {
+    margin:auto;
+  }
+  .single-checkbox {
+    margin-right: 232px;
+  }
+}
+
+// チェックボックスの大きさ。親要素にクラス付与しているのでinputで指定している
+ul input {
+  transform:scale(1.5);
+}
+
+/*
+  シート関連
+*/
+
+// シートのテーブル表
+table {
+  border-collapse: collapse;
+  width:100%;
+  font-size: 10px;
+  table-layout: fixed;
+  word-wrap:break-word;
+  .td-title {
+    width: 60px;
+  }
+  .td-width {
+    width: 50px;
+  }
+  .thead {
+    font-weight: bold;
+    background-color: rgba(255, 184, 77, 0.231);
+  }
+  .song-column {
+    font-weight: bold;
+    background-color: rgba(255, 184, 77, 0.054);
+  }
+  p {
+    margin: 0;
+    font-weight: lighter;
+  }
+}
+
+/*
+  文字&バリデーション関連
+*/
 .supplement-message {
   color: rgba(0, 0, 0, 0.421);
   font-size: 10px;
 }
 
-#form ,#sheet {
-  padding-left: 5px;
-  padding-right: 10px;
+.validate-message {
+  color: red;
+  font-size: 12px;
 }
 
-
-
-
-
-
-
-
-
-
-@media screen and (min-width:768px) and ( max-width:1024px) {
-body {
-  max-width: 40%;
+span p {
+  font-size: 12px;
+  font-weight: lighter;
+  margin: 0;
 }
-}
-@media screen and (min-width:1024px) {
-  body {
-    max-width: 30%;
-  }
+.light-text{
+  font-size: 12px;
+  font-weight: lighter;
 }
