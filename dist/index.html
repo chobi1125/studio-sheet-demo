@@ -16,6 +16,7 @@
         <button class="display-none" id="logoutBtn" onclick="logoutFC()">ログアウト</button>
       </div>
       <p class="supplement-message" id="supplement-message">※ログインすると登録後の編集が可能です。みんなの負担減！</p>
+      <p class="supplement-message" id="supplement-message">※幹事機能はデモ用です。通常のログインでは、自身の登録情報が保持(編集・削除可能)されますが、テストログイン時は保持されません。</p>
     </header>
     <main>
       <div class="display-block" id="form">
@@ -107,7 +108,7 @@
             <button class="display-none" id="removeBtn" onclick="removeFC()">取消</button>
             <button class="display-none" id="rootEditBtn" onclick="rootEditFC()">更新(幹事)</button>
             <button class="display-none" id="rootRemoveBtn" onclick="rootRemoveFC()">取消(幹事)</button>
-            <p class="supplement-message display-none" id="rootMessage">※選択ユーザーの編集(幹事権限)。<br>自身の編集は再度リロードして行ってください。<br>ログインして登録しているユーザーの削除はできません。</p>
+            <p class="supplement-message display-none" id="rootMessage">※選択ユーザーの編集(幹事権限)。<br><del>自身の編集は再度リロードして行ってください。</del>※デモ非対応<br>他の幹事ユーザーの編集・削除とログインユーザーの削除はできません。</p>
           </div>
         </div>
       </div>

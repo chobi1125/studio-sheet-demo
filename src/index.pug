@@ -18,6 +18,7 @@ html(lang="ja")
         button#testLoginBtn.test-login-btn.display-inline(onclick="testLoginFC()") テストログイン(幹事)
         button#logoutBtn.display-none(onclick="logoutFC()") ログアウト
       p.supplement-message#supplement-message ※ログインすると登録後の編集が可能です。みんなの負担減！
+      p.supplement-message#supplement-message ※幹事機能はデモ用です。通常のログインでは、自身の登録情報が保持(編集・削除可能)されますが、テストログイン時は保持されません。
     main
       #form.display-block
         .ly
@@ -58,7 +59,7 @@ html(lang="ja")
             button#removeBtn.display-none(onclick="removeFC()") 取消
             button#rootEditBtn.display-none(onclick="rootEditFC()") 更新(幹事)
             button#rootRemoveBtn.display-none(onclick="rootRemoveFC()") 取消(幹事)
-            p.supplement-message.display-none#rootMessage ※選択ユーザーの編集(幹事権限)。<br>自身の編集は再度リロードして行ってください。<br>ログインして登録しているユーザーの削除はできません。
+            p.supplement-message.display-none#rootMessage ※選択ユーザーの編集(幹事権限)。<br><del>自身の編集は再度リロードして行ってください。</del>※デモ非対応<br>他の幹事ユーザーの編集・削除とログインユーザーの削除はできません。
       
 
       //- ⭐⭐シート
